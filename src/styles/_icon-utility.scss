@@ -1,0 +1,58 @@
+@import "icon-map";
+
+
+// $fidelity-extras: (
+//   check: "\e900",
+//   error: "\e901",
+//   info: "\e902",
+//   success: "\e903",
+//   warning: "\e904",
+// );
+
+
+// $all-icons: map-merge($fidelity-icons, $fidelity-extras);
+
+.fil-icon {
+
+  .checkbox__container.checkbox__container & {
+    margin-bottom: auto;
+
+    // color: $teal-500;
+
+    font-size: 36px;
+  }
+
+  &.fil-icon--left:after {
+    content: none;
+  }
+
+  &:after,
+  &:before {
+    font-family: 'fidelity-icon-font';
+    // font-size: rem-calc(24);
+    font-size: inherit;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@each $name, $unicode in $icons-def {
+  .fil-icon-#{$name} {
+    &:after {
+      content: $unicode;
+    }
+
+    &.fil-icon--left:before {
+      content: $unicode;
+    }
+
+  }
+}
+
+@function icon($key) {
+  @if map-has-key($icons-def, $key ) {
+    @return map-get($icons-def, $key);
+  }
+
+  @warn "Unknown `#{$key}` in $icons-def";
+  @return null;
+}

@@ -1,0 +1,43 @@
+@import "colors";
+
+.border-right {
+  border-right: 1px solid #dcdee1;
+}
+
+.bordered-panel {
+  padding: 1rem;
+  border: 1px solid #979da6;
+
+  .border-right {
+    border-right: 1px solid #dcdee1;
+  }
+
+  &.fluid {
+    padding-right: 2rem;
+    padding-left: 2rem;
+  }
+}
+
+p {
+  .intro {
+    font-size: 1.375rem;
+  }
+}
+
+.text-grey-400 {
+  color: #747c89;
+}
+
+button {
+  &.button {
+    &.aws-orange {
+      background: $orange1;
+    }
+  }
+}
+
+input, textarea {
+  &::placeholder {
+    color: #cacaca;
+  }
+}

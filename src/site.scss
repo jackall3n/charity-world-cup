@@ -1,0 +1,17 @@
+@import "~foundation-sites/scss/foundation";
+@include foundation-everything();
+
+
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #react-root, #application, .app-wrapper {
+  height: 100%;
+}
+
+input {
+  margin: 0;
+}

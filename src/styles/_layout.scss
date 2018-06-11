@@ -1,0 +1,28 @@
+%display-flex {
+  display: -ms-flexbox;
+  display: flex;
+}
+
+%flex {
+  @extend %display-flex;
+
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+}
+
+%no-flex {
+  flex: 0;
+}
+
+%flex-col {
+  flex-direction: column;
+}
+
+%flex-row {
+  flex-direction: row;
+}
+
+%align-center {
+  -ms-flex-align: center;
+  align-items: center;
+}

@@ -1,0 +1,1 @@
+export const UNREAD_RECEIVED = 'UNREAD_RECEIVED';
