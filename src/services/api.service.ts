@@ -28,7 +28,7 @@ class ApiService {
         let request_options = {...this._options, ...options};
 
         let headers = {
-            Authorization: `Bearer ${this.accessTokenService.get()}`
+            // Authorization: `Bearer ${this.accessTokenService.get()}`
         };
 
         return new Promise((resolve, reject) => {
@@ -41,7 +41,7 @@ class ApiService {
             }).then(response => {              
                 resolve(response.data)
             }).catch((error: AxiosError) => {
-                if(error.response.status === 401) {
+                if(error.response && error.response.status === 401) {
                     console.log("no auth");
                     window.location.pathname = "/auth";
                 }

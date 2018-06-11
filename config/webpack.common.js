@@ -9,7 +9,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 
 const METADATA = {
-  title: 'Adviser Workstation',
+  title: 'Sweepstake | Charity FIFA World Cup 2018',
   baseUrl: '/'
 };
 
@@ -87,10 +87,6 @@ module.exports = function (options) {
       new ProvidePlugin({
         __extends: 'typescript-extends'
       }),
-      new CopyWebpackPlugin([
-        {from: 'src/fonts', to: 'fonts'}
-      ]),
-      new CopyWebpackPlugin([]),
       new DefinePlugin({
         'process.env': {
           'NODE_ENV': JSON.stringify(options.env)
