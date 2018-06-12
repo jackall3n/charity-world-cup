@@ -41,7 +41,7 @@ class LoginRoute extends React.Component<any, any> {
 
         this.authenticationService.login(this.state.email, this.state.password).then(() => {
             this.props.actions.account.get((user) => {
-                if(user.donated) {
+                if(user.donation) {
                     this.props.history.push('/account');
                 }
                 else {

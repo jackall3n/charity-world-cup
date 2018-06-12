@@ -18,7 +18,7 @@ class RegisterRoute extends React.Component<any, any> {
 
     static getDerivedStateFromProps(props, state) {
         if (props.account.user) {
-            if(props.account.user.donated) {
+            if(props.account.user.donation) {
                 props.history.push('/account');
             }
             else {
@@ -65,7 +65,7 @@ class RegisterRoute extends React.Component<any, any> {
 
         this.authenticationService.register(this.state.user).then(success => {
             this.props.actions.account.get((user) => {
-                if(user.donated) {
+                if(user.donation) {
                     this.props.history.push('/account');
                 }
                 else {

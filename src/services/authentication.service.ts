@@ -1,13 +1,12 @@
 import ApiService from './api.service'
 import AccessTokenService from './access-token.service'
-
+import apiConfiguration from '../configurations/api';
 
 class AuthenticationService {
     accessTokenService = new AccessTokenService(); 
 
     private apiService = new ApiService({
-        //baseURL: 'http://localhost:5000'
-        baseURL: 'https://charity-world-cup-api.herokuapp.com'
+        baseURL: apiConfiguration.url
     });
 
     login(email: string, password: string) : Promise<boolean> {

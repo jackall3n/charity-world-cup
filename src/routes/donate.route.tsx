@@ -2,6 +2,7 @@ import * as React from 'react';
 import {Route, Switch, withRouter} from "react-router";
 import {connect} from "react-redux";
 import AccessTokenService from "../services/access-token.service";
+import * as moment from 'moment';
 
 import * as NumberFormat from 'react-number-format';
 
@@ -25,8 +26,8 @@ class DonateRoute extends React.Component<any, any> {
 
     goToLink(e) {
         e.preventDefault();
-        
-        let ref = "f34nfinw3f";
+
+        let ref = this.props.account.user.id;
         let link = `http://link.justgiving.com/v1/fundraisingpage/donate/pageId/11061725`;
 
         let q = {
@@ -47,6 +48,17 @@ class DonateRoute extends React.Component<any, any> {
     }
 
     render() {
+        
+        if(this.props.account.user && this.props.account.user.donation) {
+            let donation = this.props.account.user.donation;
+            return (
+                <div>
+                    <h2 className="title">2. <span style={{textDecorationLine: 'line-through', textDecorationStyle: 'solid'}}>DONATE TO PLAY</span></h2>
+                    <p className="cell text-center">It looks like you've already donated on {moment(donation.created).format("DD MMMM YYYY [at] HH:mm")}!<br/><br/></p>
+                </div>
+            )
+        }
+
         return (
             <div>
                 <h2 className="title">2. DONATE TO PLAY</h2>

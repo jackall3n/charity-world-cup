@@ -1,12 +1,12 @@
 import ApiService from './api.service'
 import Team from "../models/team";
 import Group from "../models/group";
+import apiConfiguration from '../configurations/api';
 
 class WorldCupService {
 
     private apiService = new ApiService({
-        //baseURL: 'http://localhost:5000'
-        baseURL: 'https://charity-world-cup-api.herokuapp.com'
+        baseURL: apiConfiguration.url
     });
 
     getTeams() : Promise<Team[]> {
@@ -22,6 +22,14 @@ class WorldCupService {
 
         return this.apiService.get<any>({
             url
+        })
+    }
+
+    saveDonation(donation) {
+        return this.apiService.post<any>({
+            url: 'donations/save',
+            body: donation,
+            authorise: true
         })
     }
 }
