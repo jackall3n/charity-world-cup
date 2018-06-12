@@ -8,11 +8,11 @@ class Navigation extends React.Component<any, any> {
     render() {
         let routes = [
             {title: 'Home', path: '/', exact: true},
+            {title: 'How to Play', path: '/how-to-play'},
+            {title: 'Account', path: /*(this.props.account.user ? */'/account'/* : '/account/login')*/},
+            {title: 'Donate', path: '/donate'},
             {title: 'Teams', path: '/teams'},
-            {title: 'Standings', path: '/standings'},
-            {title: 'Matches', path: '/matches'},
-            {title: 'Charity', path: '/charity'},
-            {title: 'Account', path: (this.props.account.user ? '/account' : '/account/login')}
+            {title: 'The Charity', path: 'http://www.ptsdresolution.org/', target: '_blank'}
         ];
 
         return (
@@ -20,7 +20,7 @@ class Navigation extends React.Component<any, any> {
                 <div className="medium-10 medium-offset-1 large-8 large-offset-2 small-10 small-offset-1 grid-x">
                     {routes.map(route => (
                         <NavLink exact={route.exact} className="link cell medium-2 align-center flex-container"
-                                 to={route.path} key={route.path}>
+                                 to={route.path} key={route.path} target={route.target}>
                             <span className="link-text">{route.title}</span>
                         </NavLink>
                     ))}

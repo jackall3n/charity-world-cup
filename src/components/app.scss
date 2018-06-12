@@ -43,6 +43,7 @@ nav {
       font-weight: bold;
       letter-spacing: 1px;
       position: relative;
+      text-align: center;
     }
 
     &.active {
@@ -106,7 +107,7 @@ nav {
   text-transform: uppercase;
   font-weight: bold;
   letter-spacing: 2px;
-  font-size: 55px;
+  font-size: 35px;
   padding: 100px 0 0;
   text-align: center;
 }
@@ -118,7 +119,7 @@ nav {
   font-weight: bold;
   width: 100%;
   padding: 24px 0;
-  font-size: 1.2rem;
+  font-size: 0.9rem;
   margin-bottom: 50px;
 
   a {

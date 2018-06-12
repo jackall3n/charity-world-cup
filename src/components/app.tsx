@@ -3,15 +3,18 @@ import {connect} from 'react-redux';
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 
 import "./app.scss";
+import {app} from "../store/actions/app/app.actions";
+
 import AccountIndexRoute from "../routes/account-index.route";
 import TeamsRoute from "../routes/teams.route";
 import HomeRoute from "../routes/home.route";
 import Header from "./header";
 import Navigation from "./navigation";
-import {app} from "../store/actions/app/app.actions";
 import CharityRoute from "../routes/charity.route";
 import StandingsRoute from "../routes/standings.route";
 import MatchesRoute from "../routes/matches.route";
+import DonateRoute from "../routes/donate.route";
+import DonatedRoute from "../routes/donated.route";
 
 class App extends React.Component<any, any> {
 
@@ -21,7 +24,7 @@ class App extends React.Component<any, any> {
 
     render() {
         if(!this.props.app.initialized) {
-            return <div>Loading</div>
+            return <div/>
         }
 
         return (
@@ -40,6 +43,8 @@ class App extends React.Component<any, any> {
                                 <Route path={"/charity"} component={CharityRoute}/>
                                 <Route path={"/standings"} component={StandingsRoute}/>
                                 <Route path={"/matches"} component={MatchesRoute}/>
+                                <Route path={"/donate"} exact component={DonateRoute}/>
+                                <Route path={"/donate/success"} component={DonatedRoute}/>
                                 <Route path={"/"} component={HomeRoute}/>
                             </Switch>
                         </div>

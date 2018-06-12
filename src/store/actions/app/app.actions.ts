@@ -12,9 +12,8 @@ function initialize() {
     return dispatch => {
         dispatch(teams.request());
         dispatch(account.get(() => {
-            console.log('done?');
+            dispatch(initialized())
         }))
-        dispatch(initialized())
     }
 }
 

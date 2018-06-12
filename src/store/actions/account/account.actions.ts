@@ -12,9 +12,9 @@ function get(callback) {
     return dispatch => {
         return new AuthenticationService().me().then(user => {
             dispatch(account_received(user));
-            callback();
+            callback(user);
         }).catch(error => {
-            callback();
+            callback({});
         })
     }
 }

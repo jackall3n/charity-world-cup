@@ -7,9 +7,8 @@ class HomeRoute extends React.Component<any, any> {
         return (
             <div>
                 <div className="grid-x align-center">
-                    <h2 className="lato intro">RAISE MONEY AND TAKE PART IN THE CHARITY FIFA WORLD CUP SWEEPSTAKE WITH <span
-                        style={{color: '#577b98'}}>ANY</span> DONATION!</h2>
-                    <h5 className="lato sub-intro">100% of all donations go to the <Link to="/charity">Sussex PTSD Fund</Link></h5>
+                    <h2 className="lato intro">DONATE TO TAKE PART IN THE 2018 FIFA WORLD CUP SWEEPSTAKE AND GET A CHANCE TO WIN A 4* NIGHT IN LONDON FOR TWO!</h2>
+                    <h5 className="lato sub-intro">100% of donations go to <Link to="http://www.ptsdresolution.org/" target="_blank">ptsdresolution.org</Link>.</h5>
                     <Link to={"/account/register"} className="button medium-3">JOIN IN</Link>
                 </div>
             </div>

@@ -18,7 +18,12 @@ class RegisterRoute extends React.Component<any, any> {
 
     static getDerivedStateFromProps(props, state) {
         if (props.account.user) {
-            props.history.push('/account');
+            if(props.account.user.donated) {
+                props.history.push('/account');
+            }
+            else {
+                props.history.push('/donate');
+            }
         }
 
         return {...state}
@@ -59,8 +64,13 @@ class RegisterRoute extends React.Component<any, any> {
         }
 
         this.authenticationService.register(this.state.user).then(success => {
-            this.props.actions.account.get(() => {
-                this.props.history.push('/account');
+            this.props.actions.account.get((user) => {
+                if(user.donated) {
+                    this.props.history.push('/account');
+                }
+                else {
+                    this.props.history.push('/donate');
+                }
             });
         }).catch(error => {
             this.setState({
@@ -144,7 +154,7 @@ class RegisterRoute extends React.Component<any, any> {
     render() {
         return (
             <div>
-                <h2 className="title">REGISTER AND TAKE PART</h2>
+                <h2 className="title">1. JOIN US TO TAKE PART</h2>
                 <form className="grid-x" onSubmit={this.register}>
                     <div className="grid-container large-10 large-offset-1 cell">
                         <div className="grid-x grid-padding-x align-center">
@@ -160,7 +170,7 @@ class RegisterRoute extends React.Component<any, any> {
                                 </label>
                             </div>
                             <div className="cell medium-6">
-                                <label className={this.show_error('is-invalid-label', 'firstName').className}>
+                                <label className={this.show_error('is-invalid-label', 'lastName').className}>
                                     Last Name
                                     <input id="lastName" value={this.state.user.lastName}
                                            onChange={(e) => this.updateUser(e.target.value, 'lastName')} type="text"/>
