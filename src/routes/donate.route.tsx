@@ -34,7 +34,7 @@ class DonateRoute extends React.Component<any, any> {
             amount: this.state.amount,
             reference: ref,
             currency: 'GBP',
-            exitUrl: `https://localhost:9000/ref?=${ref}&jgDonationId=JUSTGIVING-DONATION-ID`
+            exitUrl: `http://localhost:9000/donate/success?ref=${ref}&jgDonationId=JUSTGIVING-DONATION-ID`
         }
 
         let params = [];

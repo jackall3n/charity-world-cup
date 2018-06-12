@@ -1,4 +1,4 @@
-import {ACCOUNT_RECEIVED} from "./account.action-types";
+import {ACCOUNT_RECEIVED, DONATION_RECEIVED} from "./account.action-types";
 import AuthenticationService from "../../../services/authentication.service";
 
 function account_received(me) {
@@ -19,6 +19,14 @@ function get(callback) {
     }
 }
 
+function donation_received(donation) {
+    return {
+        type: DONATION_RECEIVED,
+        donation
+    }
+}
+
 export const account = {
-   get
+   get,
+   donation_received
 };

@@ -2,6 +2,7 @@ import * as React from 'react';
 import {Route, Switch, withRouter} from "react-router";
 import {connect} from "react-redux";
 import WorldCupService from 'services/world-cup.service';
+import { account } from 'store/actions/account/account.actions';
 
 
 class DonatedRoute extends React.Component<any, any> {
@@ -33,11 +34,14 @@ class DonatedRoute extends React.Component<any, any> {
         this.worldCupService.saveDonation({
             reference,
             donation_id
-        }).then(() => {
+        }).then(result => {
             this.setState({
                 processing: false,
                 errors: false
-            })
+            });
+
+            this.props.actions.account.donation_received(result.donation)
+
         }).catch(() => {
             this.setState({
                 processing: false,
@@ -87,7 +91,13 @@ const mapState = state => {
 };
 
 const mapDispatch = dispatch => {
-    return {}
+    return {
+        actions: {
+            account: {
+                donation_received: donation => dispatch(account.donation_received(donation))
+            }
+        }
+    }
 };
 
 export default withRouter<any>(connect(mapState, mapDispatch)(DonatedRoute));
