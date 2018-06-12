@@ -10,11 +10,15 @@ class AccountIndexRoute extends React.Component<any, any> {
     render() {
         return (
             <Router>
-                <Switch>
-                    <Route path={"/account/login"} component={LoginRoute}/>
-                    <Route path={"/account/register"} component={RegisterRoute}/>
-                    <Route path={"/account"} exact component={AccountRoute}/>
-                </Switch>
+                <div>
+                    <Switch>
+                        <Route path={"/account/login"} component={LoginRoute}/>
+                        <Route path={"/account/register"} component={RegisterRoute}/>
+                        <Route path={"/account"} exact component={AccountRoute}/>
+                    </Switch>
+                    <p className="text-center account-help">If you're having any issues with your account, please email <a
+                        href="mailto:me@jackallen.me">me@jackallen.me</a>.</p>
+                </div>
             </Router>
         )
     }

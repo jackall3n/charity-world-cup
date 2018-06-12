@@ -19,6 +19,7 @@ const METADATA = webpackMerge(common.metadata, {
 
 module.exports = function (options) {
   return webpackMerge(common, {
+    mode: 'production',
     devtool: 'cheap-module-source-map',
     output: {
       path: helpers.root('dist'),

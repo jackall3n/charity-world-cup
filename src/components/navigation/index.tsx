@@ -17,10 +17,9 @@ class Navigation extends React.Component<any, any> {
 
         return (
             <nav className="grid-x">
-                <div
-                    className="medium-10 medium-offset-1 large-8 large-offset-2 small-10 small-offset-1 grid-x hide-for-small-only">
+                <div className="medium-10 medium-offset-1 large-8 large-offset-2 small-10 small-offset-1 grid-x">
                     {routes.map(route => (
-                        <NavLink exact={route.exact} className="link cell small-2 align-center flex-container"
+                        <NavLink exact={route.exact} className="link cell medium-2 align-center flex-container"
                                  to={route.path} key={route.path}>
                             <span className="link-text">{route.title}</span>
                         </NavLink>

@@ -11,10 +11,11 @@ class LoginRoute extends React.Component<any, any> {
         super(props);
 
         this.login = this.login.bind(this);
+        this.show_error = this.show_error.bind(this);
     }
 
     static getDerivedStateFromProps(props, state) {
-        if(props.account.user) {
+        if (props.account.user) {
             props.history.push('/account');
         }
 
@@ -22,43 +23,64 @@ class LoginRoute extends React.Component<any, any> {
     }
 
     state = {
-        error: '',
+        submitted: false,
+        error: false,
         submitting: false,
         email: '',
         password: ''
     };
 
-    login(event){
+    login(event) {
         event.preventDefault();
 
         this.setState({
-            submitting: true
+            submitted: true,
+            submitting: true,
+            error: false
         });
 
         this.authenticationService.login(this.state.email, this.state.password).then(() => {
             this.props.actions.account.get(() => {
                 this.props.history.push('/account');
             });
-        }).catch(error => {
+        }).catch(() => {
             this.setState({
-                error,
+                error: true,
                 submitting: false
             });
         })
+    }
+
+    show_error(className) {
+        return this.state.error && this.state.submitted ? className : null;
     }
 
     render() {
         return (
             <div>
                 <h2 className="title">WELCOME BACK</h2>
-                <form className="grid-x" onSubmit={this.login}>
+                <form className="grid-x" onSubmit={this.login} data-abide noValidate={true}>
                     <div className="grid-container large-8 large-offset-2 cell">
                         <div className="grid-x grid-padding-x align-center">
                             <div className="cell">
-                                <label>Email<input  value={this.state.email} onChange={e => this.setState({email: e.target.value})} id="email" type="text"/></label>
+                                <label className={this.show_error('is-invalid-label')}>
+                                    Email
+                                    <input value={this.state.email}
+                                           onChange={e => this.setState({email: e.target.value})} id="email"
+                                           type="text"/>
+                                </label>
                             </div>
                             <div className="cell">
-                                <label>Password<input value={this.state.password} onChange={e => this.setState({password: e.target.value})} id="password" type="password"/></label>
+                                <label className={this.show_error('is-invalid-label')}>
+                                    Password
+                                    <input value={this.state.password}
+                                           onChange={e => this.setState({password: e.target.value})}
+                                           id="password" type="password"/>
+                                    <div className={`form-error ${this.show_error('is-visible')}`}>
+                                        Something didn't go well. Please try again, or contact <a
+                                        href="mailto:me@jackallen.me">me@jackallen.me</a>.
+                                    </div>
+                                </label>
                             </div>
                             <div className="cell text-center actions">
                                 <button className="button" disabled={this.state.submitting}>LOG IN</button>
