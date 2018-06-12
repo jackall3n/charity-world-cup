@@ -5,6 +5,7 @@ import Group from "../models/group";
 class WorldCupService {
 
     private apiService = new ApiService({
+        //baseURL: 'http://localhost:5000'
         baseURL: 'https://charity-world-cup-api.herokuapp.com'
     });
 
