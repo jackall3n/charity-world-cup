@@ -1,44 +1,24 @@
 import * as React from 'react';
 import WorldCupService from "../services/world-cup.service";
-import * as moment from 'moment';
-import {withRouter} from "react-router";
-import AccessTokenService from "../services/access-token.service";
-import Team from "../models/team";
+import {RouteComponentProps, withRouter} from "react-router";
+import {connect} from "react-redux";
 
-class TeamsRoute extends React.Component<any, any> {
-    worldCupService = new WorldCupService();
 
-    state = {
-        groups: []
-    };
-
-    constructor(props) {
-        super(props);
-    }
-
-    componentWillMount() {
-        this.worldCupService.getGroups().then(groups => {
-            this.setState({
-                groups
-            })
-        })
-    }
-
+class TeamsRoute extends React.Component<RouteComponentProps<{}> & any, any> {
     render() {
-
         return (
             <div className="app-wrapper">
-                <div className="groups">
-                    {this.state.groups.map(group => (
-                        <div key={group._id} className="group">
-                            <h3>Group {group.letter}</h3>
+                <div className="groups grid-x grid-margin-x">
+                    {this.props.teams.map(group => (
+                        <div key={group._id} className="group cell large-6">
+                            <h3 className="lato">Group {group.letter}</h3>
                             <div className="grid-x grid-margin-x teams">
                                 {group.teams.map(team => (
                                     <div key={team._id} className="cell team medium-3 small-6">
-                                        <span>{team.name}</span>
                                         <div><img
-                                            src={`https://api.fifa.com/api/v1/picture/flags-fwc2018-5/${team.code}`}/>
+                                            src={`https://api.fifa.com/api/v1/picture/flags-fwc2018-2/${team.code}`}/>
                                         </div>
+                                        <span className="team-name">{team.name}</span>
                                     </div>
                                 ))}
                             </div>
@@ -50,4 +30,14 @@ class TeamsRoute extends React.Component<any, any> {
     }
 }
 
-export default withRouter(TeamsRoute);
+const mapState = state => {
+    return {
+        teams: state.teams
+    }
+};
+
+const mapDispatch = dispatch => {
+    return {}
+};
+
+export default withRouter<any>(connect<{}, {}, {}>(mapState, mapDispatch)(TeamsRoute));

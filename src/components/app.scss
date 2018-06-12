@@ -1,1 +1,162 @@
+$dark-blue: #192936;
 
+.header-wrapper {
+  background: $dark-blue;
+  color: white;
+  position: relative;
+
+  .cover {
+    background-image: url(https://img.fifa.com/mm/photo/tournament/competition/02/93/54/46/2935446_xbig-lnd.jpg);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    background-size: cover;
+    background-position-y: center;
+    opacity: 0.05;
+  }
+}
+
+header {
+
+  h2 {
+    text-align: center;
+    font-weight: bold;
+    font-family: Lato, sans-serif;
+    text-transform: uppercase;
+    font-size: 28px;
+    padding: 60px 0 20px;
+    letter-spacing: 9px;
+  }
+}
+
+nav {
+  padding: 15px 0;
+
+  a {
+    color: white;
+
+    .link-text {
+      text-transform: uppercase;
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      position: relative;
+    }
+
+    &.active {
+
+      .link-text {
+
+        &::after {
+          content: '';
+          display: block;
+          left: 0;
+          right: 0;
+          bottom: -5px;
+          border-radius: 4px;
+          height: 2px;
+          background: #d9202e;
+          position: absolute;
+          box-shadow: 0 0 16px 1px #d9202e;
+        }
+      }
+    }
+
+    &:visited {
+      color: white;
+    }
+  }
+}
+
+.teams {
+  .team {
+    text-align: center;
+
+    .team-name {
+      display: block;
+      margin-top: 10px;
+    }
+  }
+}
+
+.groups {
+  .group {
+    background: #192936;
+    padding: 20px 40px 20px 40px;
+    border-radius: 15px;
+    color: white;
+    margin-top: 25px;
+
+    background: linear-gradient(#293c4c, #131e30);
+
+    h3 {
+      text-align: center;
+      font-size: 15px;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: bold;
+    }
+  }
+}
+
+.intro {
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 2px;
+  font-size: 55px;
+  padding: 100px 0 0;
+  text-align: center;
+}
+
+.sub-intro {
+  text-align: center;
+  text-transform: uppercase;
+  display: block;
+  font-weight: bold;
+  width: 100%;
+  padding: 24px 0;
+  font-size: 1.2rem;
+  margin-bottom: 50px;
+
+  a {
+    position: relative;
+
+    &::after {
+      left: 0;
+      bottom: -3px;
+      right: 0;
+      height: 2px;
+      background: #529bcb;
+      content: '';
+      position: absolute;
+    }
+  }
+}
+
+.button {
+  background: #182734;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 25px;
+  letter-spacing: 5px;
+}
+
+.title {
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 2px;
+  font-size: 55px;
+  padding: 70px 0 30px;
+  text-align: center;
+  font-family: Lato, sans-serif;
+}
+
+form {
+  .actions {
+    padding-top: 30px;
+  }
+}

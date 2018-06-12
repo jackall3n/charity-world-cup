@@ -12,6 +12,10 @@ class AccessTokenService {
     set(token: string) {
         this.localStorageService.set(ACCESS_TOKEN_KEY, token);
     }
+
+    clear() {
+        this.set('');
+    }
 }
 
 export default AccessTokenService;

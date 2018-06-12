@@ -1,12 +1,24 @@
 import {ACCOUNT_RECEIVED} from "./account.action-types";
+import AuthenticationService from "../../../services/authentication.service";
 
-function account_received(account) {    
+function account_received(me) {
     return {
         type: ACCOUNT_RECEIVED,
-        account
+        user: me
+    }
+}
+
+function get(callback) {
+    return dispatch => {
+        return new AuthenticationService().me().then(user => {
+            dispatch(account_received(user));
+            callback();
+        }).catch(error => {
+            callback();
+        })
     }
 }
 
 export const account = {
-    received: account_received
+   get
 };

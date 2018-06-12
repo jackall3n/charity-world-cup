@@ -11,13 +11,20 @@ html, body, #react-root, #application, .app-wrapper {
   height: 100%;
 }
 
-body {
-  background: #0f4583 url(https://www.fifa.com/assets/img/tournaments/17/2018/common/fwc_darkbluebg.png) repeat;
-  color: white;
+body, .lato {
   font-family: "Lato", Arial, sans-serif;
 }
 
-h1 {
+body {
+  color: #13212b;
+}
+
+.fifa-background {
+  color: white;
+  background: #0f4583 url(https://www.fifa.com/assets/img/tournaments/17/2018/common/fwc_darkbluebg.png) repeat;
+}
+
+h2 {
   font-family: "Raleway", Arial, sans-serif;
 }
 
