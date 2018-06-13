@@ -6,7 +6,7 @@ $dark-blue: #192936;
   position: relative;
 
   .cover {
-    background-image: url(https://img.fifa.com/mm/photo/tournament/competition/02/93/54/46/2935446_xbig-lnd.jpg);
+    background-image: url(/images/header_bg.jpg);
     top: 0;
     right: 0;
     bottom: 0;
@@ -164,4 +164,10 @@ form {
 
 .account-help {
   padding: 40px;
+}
+
+.instructions {
+  li {
+    margin-bottom: 6px;
+  }
 }

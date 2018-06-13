@@ -15,6 +15,7 @@ import StandingsRoute from "../routes/standings.route";
 import MatchesRoute from "../routes/matches.route";
 import DonateRoute from "../routes/donate.route";
 import DonatedRoute from "../routes/donated.route";
+import HowToPlayRoute from '../routes/how-to-play.route';
 
 class App extends React.Component<any, any> {
 
@@ -44,6 +45,7 @@ class App extends React.Component<any, any> {
                                 <Route path={"/standings"} component={StandingsRoute}/>
                                 <Route path={"/matches"} component={MatchesRoute}/>
                                 <Route path={"/donate"} exact component={DonateRoute}/>
+                                <Route path={"/how-to-play"} component={HowToPlayRoute}/>
                                 <Route path={"/donate/success"} component={DonatedRoute}/>
                                 <Route path={"/"} component={HomeRoute}/>
                             </Switch>

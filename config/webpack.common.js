@@ -84,6 +84,9 @@ module.exports = function (options) {
         inject: 'body',
         environment: process.env.NODE_ENV
       }),
+      new CopyWebpackPlugin([
+        { from: 'src/images', to: 'images'}
+      ]),
       new ProvidePlugin({
         __extends: 'typescript-extends'
       }),
