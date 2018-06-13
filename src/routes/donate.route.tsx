@@ -28,13 +28,15 @@ class DonateRoute extends React.Component<any, any> {
         e.preventDefault();
 
         let ref = this.props.account.user.id;
+        var domain = window.location.protocol + "//" + window.location.hostname + (window.location.port ? ':' + window.location.port: '');
+
         let link = `http://link.justgiving.com/v1/fundraisingpage/donate/pageId/11061725`;
 
         let q = {
             amount: this.state.amount,
             reference: ref,
             currency: 'GBP',
-            exitUrl: `http://localhost:9000/donate/success?ref=${ref}&jgDonationId=JUSTGIVING-DONATION-ID`
+            exitUrl: `${domain}/donate/success?ref=${ref}&jgDonationId=JUSTGIVING-DONATION-ID`
         }
 
         let params = [];

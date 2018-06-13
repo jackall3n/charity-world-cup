@@ -25,7 +25,7 @@ module.exports = function (options) {
       path: helpers.root('dist'),
       filename: '[name].[chunkhash].js',
       sourceMapFilename: '[name].map',
-      chunkFilename: '[id].chunk.js',
+      chunkFilename: '[name].[chunkhash].js',
       library: 'ac_[name]',
       libraryTarget: 'var'
     },
@@ -57,7 +57,7 @@ module.exports = function (options) {
             ecma: 6,
             mangle: true
           },
-          sourceMap: true
+          sourceMap: false
         })
       ]
     }
