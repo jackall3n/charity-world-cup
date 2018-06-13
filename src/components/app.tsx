@@ -1,6 +1,6 @@
 import * as React from "react";
 import {connect} from 'react-redux';
-import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import {HashRouter as Router, Route, Switch} from "react-router-dom";
 
 import "./app.scss";
 import {app} from "../store/actions/app/app.actions";

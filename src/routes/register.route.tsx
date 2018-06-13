@@ -32,6 +32,7 @@ class RegisterRoute extends React.Component<any, any> {
     state = {
         submitted: false,
         submitting: false,
+        error: false,
         errors: undefined,
         valid: true,
         user: {
@@ -51,6 +52,7 @@ class RegisterRoute extends React.Component<any, any> {
         event.preventDefault();
 
         this.setState({
+            error: false,
             submitting: true,
             submitted: true
         });
@@ -74,6 +76,7 @@ class RegisterRoute extends React.Component<any, any> {
             });
         }).catch(error => {
             this.setState({
+                error: true,
                 submitting: false
             })
         })
@@ -156,7 +159,11 @@ class RegisterRoute extends React.Component<any, any> {
             <div>
                 <h2 className="title">1. JOIN US TO TAKE PART</h2>
                 <form className="grid-x" onSubmit={this.register}>
+                    
                     <div className="grid-container large-10 large-offset-1 cell">
+                        {this.state.submitted && this.state.error && (<div data-abide-error className="alert callout">
+                            <p><i className="fi-alert"></i>Something went wrong! Please ensure all information is correct and your email is not already registered!</p>
+                        </div>)}
                         <div className="grid-x grid-padding-x align-center">
                             <div className="cell medium-6">
                                 <label className={this.show_error('is-invalid-label', 'firstName').className}>

@@ -12,18 +12,27 @@ class Navigation extends React.Component<any, any> {
             {title: 'Account', path: /*(this.props.account.user ? */'/account'/* : '/account/login')*/},
             {title: 'Donate', path: '/donate'},
             {title: 'Teams', path: '/teams'},
-            {title: 'The Charity', path: 'http://www.ptsdresolution.org/', target: '_blank'}
+            {title: 'The Charity', external: true, path: 'http://www.ptsdresolution.org/', target: '_blank'}
         ];
 
         return (
             <nav className="grid-x">
                 <div className="medium-10 medium-offset-1 large-8 large-offset-2 small-10 small-offset-1 grid-x">
-                    {routes.map(route => (
-                        <NavLink exact={route.exact} className="link cell medium-2 align-center flex-container"
-                                 to={route.path} key={route.path} target={route.target}>
-                            <span className="link-text">{route.title}</span>
-                        </NavLink>
-                    ))}
+                    {routes.map(route => {
+                        if(route.external) {
+                            return (
+                                <a className="link cell medium-2 align-center flex-container" href={route.path} target={route.target} key={route.path}>
+                                    <span className="link-text">{route.title}</span>
+                                </a>
+                            )
+                        }
+
+                        return (
+                            <NavLink exact={route.exact} className="link cell medium-2 align-center flex-container" to={route.path} key={route.path}>
+                                <span className="link-text">{route.title}</span>
+                            </NavLink>
+                        )
+                    })}
                 </div>
             </nav>
         )
